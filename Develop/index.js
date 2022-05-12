@@ -3,7 +3,6 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const { title } = require('process');
 const generateMarkdown = require('./utils/generateMarkdown.js');
-console.log(generateMarkdown);
 // TODO: Create an array of questions for user input
 const questions = [    
     {
@@ -37,9 +36,10 @@ const questions = [
         message: 'What are the test intructions?',
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'lisbadge',
         message: 'Which license bedge do you want?',
+        choices: ["No License","Apache 2.0 License","BSD 3-Clause License","CC0","Attribution 4.0 International","MIT Lincense", "Eclipse","GNU V3","Mozilla Public License 2.0","The Perl License","Unlicense"],
     },
     {
         type: 'input',
@@ -57,42 +57,6 @@ const results = () => {
     return inquirer.prompt(questions);
 }
 
-const generateReadme = ({title,description,installInstruct,usageInfo,contriGuide,testIntruct,lisbadge,username,email}) => {
-    const format = 
-    `
-# ${title}
-
-    
-## Description
-
-${description}
-
-
-## Install Instruction
-
-${installInstruct}
-
-    
-## Usage Information
-
-${usageInfo}
-
-
-## Contribution Guide
-
-${contriGuide}
-
-## Test Instruction
-
-${testIntruct}
-
-## Author Information
-
-Email: ${email}
-GitHub Username: ${username}
-`;
-    return format;
-}
 
 // TODO: Create a function to write README file
 async function writeToFile(fileName, data) {
@@ -101,11 +65,10 @@ async function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 async function init() {
+    console.clear();
     await results()
-    .then((answer1) => { writeToFile("SampleReadme.md",generateReadme(answer1))})
-    .then(console.log("Readme file has been successfully implemented."))
+    .then((answer1) => { writeToFile("SampleReadme.md",generateMarkdown(answer1))})
     .catch((err) => console.error(err));
-    ;
 }
 
 // Function call to initialize app
