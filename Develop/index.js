@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const { title } = require('process');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 // TODO: Create an array of questions for user input
-const questions = [    
+const questions = [
     {
         type: 'input',
         name: 'title',
@@ -60,7 +60,12 @@ const results = () => {
 
 // TODO: Create a function to write README file
 async function writeToFile(fileName, data) {
-    await fs.writeFileSync(fileName,data);
+    try{
+        await fs.writeFileSync(fileName,data);
+    }
+    catch{
+        console.log("Markdown file successfully created.");
+    }
 }
 
 // TODO: Create a function to initialize app

@@ -36,7 +36,7 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   const lincenseContent = renderLicenseLink(license);
   return`
-  \n${lincenseContent.badge}
+  ${lincenseContent.badge}
 
   ## License Description
 
@@ -54,7 +54,7 @@ function generateMarkdown({title,description,installInstruct,usageInfo,contriGui
     licenseSession = licenseContent;
   }
   const format =` 
-  # ${title}` +
+  # ${title}\n` +
 
   licenseSession +
       
@@ -62,6 +62,14 @@ function generateMarkdown({title,description,installInstruct,usageInfo,contriGui
   ## Description
   
   ${description}
+
+  ## Table of Contents
+
+  - [Install Instruction](#install-instruction)
+  - [Usage Information](#usage-information)
+  - [Contribution Guide](#contribution-guide)
+  - [Test Instruction](#test-instruction)
+  - [Entitled Questions](#entitled-questions)
   
   
   ## Install Instruction
@@ -84,8 +92,8 @@ function generateMarkdown({title,description,installInstruct,usageInfo,contriGui
   
   ## Entitled Questions
   
-  * Email: ${email}
-  * GitHub Username: ${username}
+  * Email: ${email}\n
+  * GitHub Username: [${username}](https://github.com/${username})
   `;
 
   return format;
