@@ -16,22 +16,22 @@ const questions = [
         message: 'What is your project description?',
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'installInstruct',
         message: 'What are the installation instructions?',
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'usageInfo',
         message: 'What is the usage information?',
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'contriGuide',
         message: 'What is the contribution guidelines?',
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'testIntruct',
         message: 'What are the test intructions?',
     },
@@ -62,9 +62,10 @@ const results = () => {
 async function writeToFile(fileName, data) {
     try{
         await fs.writeFileSync(fileName,data);
+        console.log("Markdown file successfully created.");
     }
     catch{
-        console.log("Markdown file successfully created.");
+        console.log("Markdown file is not created");
     }
 }
 
