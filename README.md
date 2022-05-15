@@ -30,8 +30,8 @@ Step 3: npm i inquirer (to install inquire node library)
 
 ### Video
 
-Here is a URL of a Demonstration Video
-[Demonstration Video](https://www.youtube.com/)
+Here is a URL of a 
+[Demonstration Video](https://youtu.be/GtR4Ozvaats)
 
 
 
